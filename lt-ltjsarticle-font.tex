@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper]{ltjsarticle}
+\usepackage[hiragino-pro,deluxe]{luatexja-preset}
+\usepackage{fancybox}
+\usepackage{amsmath}
+\newcommand{\jugem}{寿限無　寿限無　五劫の摺り切れ 海砂利水魚の　水行末　雲来末　
+  風来末 食う寝る所に住む所, Supercalifragilisticexpialidocious!}
+\title{\tt{ltjsarticle}のフォント設定}
+\begin{document}
+\maketitle
+\section{フォントの指定方法}
+\label{sec:font}
+フォントは「family」「series」「shape」の3つを組合せて指定する．書式は以下の通り
+\VerbBox{\ovalbox}{%
+\verb+{\**family \**series \**shape 寿限無 寿限無 五劫の摺り切れ…}+
+}
+\begin{description}
+\item[family] 明朝/ゴシックの用にフォントの「体」に相当する．欧文フォントと和
+  文フォントでそれぞれ個別に指定できるが，\tt{ltjsarticle}の場合，欧文フォントを指
+  定すると，それに追従して和文フォントも変更される．逆に，和文フォントを指定した
+  だけでは欧文フォントは追従変更されず，デフォルト(Roman体)のままとなる．
+  \begin{table}[h]
+    \centering
+      欧文フォント\\
+    \begin{tabular}{rl}
+      \hline
+      \tt{\textbackslash{}rmfaimly} & {\rmfamily Roman/明朝体}\\
+      \tt{\textbackslash{}sffamily} & {\sffamily Sans-serif/ゴシック体}\\
+      \tt{\textbackslash{}ttfamily} & {\ttfamily Typewriter/ゴシック体}\\
+      \hline
+    \end{tabular}\\
+      和文フォント\\
+    \begin{tabular}{rl}
+      \hline
+      \tt{\textbackslash{}mcfaimly} & {\mcfamily 明朝体 (Roman)}\\
+      \tt{\textbackslash{}gtfamily} & {\gtfamily ゴシック体 (Roman)}\\
+      \tt{\textbackslash{}mgtfamily} & {\mgfamily 丸文字ゴシック体 (Roman)}\\
+      \tt{\textbackslash{}gtebfamily} & {\gtebfamily 極太ゴシック体 (Roman)}\\
+      \hline
+    \end{tabular}
+  \end{table}
+\item[series] フォントの「太さ」を指定する．普通もしくは太字の2種類のみ．
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{rl}
+      \hline
+      \tt{\textbackslash{}mdseries} & {\mdseries 標準の太さ (medium)}\\
+      \tt{\textbackslash{}bfseries} & {\bfseries 太字 (bold)}\\
+      \hline
+    \end{tabular}
+  \end{table}
+\item[shape] フォントの「修飾」を指定する．和文フォントには影響しない．
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{rl}
+      \hline
+      \tt{\textbackslash{}upshape} & {\upshape 直立体(default)}\\
+      \tt{\textbackslash{}itshape} & {\itshape 斜体(italic)}\\
+      \tt{\textbackslash{}slshape} & {\slshape 傾斜体(slant)．直立体を傾けただけ}\\
+      \tt{\textbackslash{}scshape} & {\scshape スモールキャピタル体(small
+        capital)}\\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{description}
+\section{フォント設定の省略形}
+family, series, shape を設定するのは面倒なので，既に定義されているものもある．
+\begin{description}
+\item [\rm Roman/明朝\tt{(\textbackslash{}rm)}] {\rm \jugem}
+\item [\bf Roman/明朝・太字\tt{(\textbackslash{}bf)}] {\bf \jugem}
+\item [\sf Sans-serif/ゴシック\tt{(\textbackslash{}sf)}] {\sf \jugem}
+\item [\tt Typewriter/ゴシック\tt{(\textbackslash{}tt)}] {\tt \jugem}
+\item [\it Roman/明朝・イタリック\tt{(\textbackslash{}it)}] {\it \jugem}
+\end{description}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
