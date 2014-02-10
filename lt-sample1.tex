@@ -1,0 +1,39 @@
+\documentclass[12pt,a4paper]{ltjsarticle}
+\usepackage[ipa]{luatexja-preset}
+\usepackage{amsmath}
+\usepackage{tikz}\usetikzlibrary{arrows}
+\begin{document}
+\tikzstyle{ineq}=[remember picture,outer sep=2pt,baseline]
+列の入れ替えは操作行列を右から乗じることと同じ.
+\[
+\begin{bmatrix}
+\tikz[ineq]{\node(a11){$a_{1,1}$};} & a_{1,2} & \tikz[ineq]{\node (a13){$a_{1,3}$};}& a_{1,4}\\
+a_{2,1} & a_{2,2} & a_{2,3}& a_{2,4}\\
+\tikz[ineq]{\node (a31) {$a_{3,1}$};} & a_{3,2} & \tikz[ineq]{\node (a33){$a_{3,3}$};}& a_{3,4}\\
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+  a_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} \\
+  a_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} \\
+  a_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} 
+\end{bmatrix}
+\begin{bmatrix}
+  0 & 0 & 1 & 0\\
+  0 & 1 & 0 & 0\\
+  1 & 0 & 0 & 0\\
+  0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+\begin{tikzpicture}[remember picture,overlay]
+\draw[red,rounded corners=1mm] (a11.north west)--(a11.north east)--(a31.south
+east)--(a31.south west)--cycle;
+\draw[blue,rounded corners=1mm] (a13.north west)--(a13.north east)--(a33.south
+east)--(a33.south west)--cycle;
+\draw (a11.north) edge [->,thick,bend left=30] (a13.north);
+\draw (a33.south) edge [->,thick, bend left=30] (a31.south);
+\end{tikzpicture}
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
