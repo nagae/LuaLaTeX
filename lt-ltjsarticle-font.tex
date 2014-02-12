@@ -1,7 +1,12 @@
 \documentclass[12pt,a4paper]{ltjsarticle}
+\usepackage{luatexja-fontspec}  %フォント埋め込み
 \usepackage[hiragino-pro,deluxe]{luatexja-preset}
 \usepackage{fancybox}
-\usepackage{amsmath}
+\usepackage{listings}
+\lstset{
+  language={TeX},
+  basicstyle=\ttfamily
+}
 \newcommand{\jugem}{寿限無　寿限無　五劫の摺り切れ 海砂利水魚の　水行末　雲来末　
   風来末 食う寝る所に住む所, Supercalifragilisticexpialidocious!}
 \title{\tt{ltjsarticle}のフォント設定}
@@ -10,12 +15,12 @@
 \section{フォントの指定方法}
 \label{sec:font}
 フォントは「family」「series」「shape」の3つを組合せて指定する．書式は以下の通り
-\VerbBox{\ovalbox}{%
-\verb+{\**family \**series \**shape 寿限無 寿限無 五劫の摺り切れ…}+
-}
+\begin{lstlisting}[frame=single]
+  {\**family \**series \**shape テキスト}
+\end{lstlisting}
 \begin{description}
 \item[family] 明朝/ゴシックの用にフォントの「体」に相当する．欧文フォントと和
-  文フォントでそれぞれ個別に指定できるが，\tt{ltjsarticle}の場合，欧文フォントを指
+  文フォントでそれぞれ個別に指定できるが，{\tt ltjsarticle}の場合，欧文フォントを指
   定すると，それに追従して和文フォントも変更される．逆に，和文フォントを指定した
   だけでは欧文フォントは追従変更されず，デフォルト(Roman体)のままとなる．
   \begin{table}[h]
@@ -23,7 +28,7 @@
       欧文フォント\\
     \begin{tabular}{rl}
       \hline
-      \tt{\textbackslash{}rmfaimly} & {\rmfamily Roman/明朝体}\\
+      \tt{\textbackslash{}rmfamily} & {\rmfamily Roman/明朝体}\\
       \tt{\textbackslash{}sffamily} & {\sffamily Sans-serif/ゴシック体}\\
       \tt{\textbackslash{}ttfamily} & {\ttfamily Typewriter/ゴシック体}\\
       \hline
@@ -31,7 +36,7 @@
       和文フォント\\
     \begin{tabular}{rl}
       \hline
-      \tt{\textbackslash{}mcfaimly} & {\mcfamily 明朝体 (Roman)}\\
+      \tt{\textbackslash{}mcfamily} & {\mcfamily 明朝体 (Roman)}\\
       \tt{\textbackslash{}gtfamily} & {\gtfamily ゴシック体 (Roman)}\\
       \tt{\textbackslash{}mgtfamily} & {\mgfamily 丸文字ゴシック体 (Roman)}\\
       \tt{\textbackslash{}gtebfamily} & {\gtebfamily 極太ゴシック体 (Roman)}\\
@@ -63,7 +68,15 @@
   \end{table}
 \end{description}
 \section{フォント設定の省略形}
-family, series, shape を設定するのは面倒なので，既に定義されているものもある．
+family, series, shape を設定するのは面倒なので，既に定義されているものを使ってみ
+る．
+\begin{lstlisting}[frame=single]
+  {\rm テキスト}
+  {\bf テキスト}
+  {\sf テキスト}
+  {\tt テキスト}
+  {\it テキスト}
+\end{lstlisting}
 \begin{description}
 \item [\rm Roman/明朝\tt{(\textbackslash{}rm)}] {\rm \jugem}
 \item [\bf Roman/明朝・太字\tt{(\textbackslash{}bf)}] {\bf \jugem}
